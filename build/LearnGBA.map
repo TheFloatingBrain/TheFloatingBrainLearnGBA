@@ -1,0 +1,408 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crti.o
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+LOAD C:/devkitPro/libgba/lib\libmm.a
+LOAD C:/devkitPro/libgba/lib\libgba.a
+START GROUP
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb\libgcc.a
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/../../../../arm-none-eabi/lib/thumb\libg.a
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/../../../../arm-none-eabi/lib/thumb\libc.a
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/../../../../arm-none-eabi/lib/thumb\libsysbase.a
+END GROUP
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtend.o
+LOAD c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtn.o
+                [!provide]                        PROVIDE (__executable_start = SEGMENT_START ("text-segment", 0x8000))
+                0x0000000000008000                . = SEGMENT_START ("text-segment", 0x8000)
+
+.interp
+ *(.interp)
+
+.note.gnu.build-id
+ *(.note.gnu.build-id)
+
+.hash
+ *(.hash)
+
+.gnu.hash
+ *(.gnu.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.dyn        0x0000000000008000        0x0
+ *(.rel.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rel.data.rel.ro .rel.data.rel.ro.* .rel.gnu.linkonce.d.rel.ro.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rel.dtors)
+ *(.rel.got)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rel_iplt_start = .)
+ *(.rel.iplt)
+ .rel.iplt      0x0000000000008000        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+                [!provide]                        PROVIDE (__rel_iplt_end = .)
+
+.rela.dyn       0x0000000000008000        0x0
+ *(.rela.init)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rela.fini)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rela.ctors)
+ *(.rela.dtors)
+ *(.rela.got)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+                [!provide]                        PROVIDE (__rela_iplt_start = .)
+ *(.rela.iplt)
+                [!provide]                        PROVIDE (__rela_iplt_end = .)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.init           0x0000000000008000        0xc
+ *(SORT_NONE(.init))
+ .init          0x0000000000008000        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crti.o
+                0x0000000000008000                _init
+ .init          0x0000000000008004        0x8 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtn.o
+
+.plt
+ *(.plt)
+
+.iplt           0x000000000000800c        0x0
+ *(.iplt)
+ .iplt          0x000000000000800c        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+
+.text           0x000000000000800c       0xb8
+ *(.text.unlikely .text.*_unlikely .text.unlikely.*)
+ *(.text.exit .text.exit.*)
+ *(.text.startup .text.startup.*)
+ *(.text.hot .text.hot.*)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x000000000000800c        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crti.o
+ .text          0x000000000000800c        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .text.deregister_tm_clones
+                0x000000000000800c       0x2c c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .text.register_tm_clones
+                0x0000000000008038       0x34 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .text.__do_global_dtors_aux
+                0x000000000000806c       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .text.frame_dummy
+                0x000000000000809c       0x28 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .text          0x00000000000080c4        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtend.o
+ .text          0x00000000000080c4        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtn.o
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00000000000080c4        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00000000000080c4        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00000000000080c4        0x0 linker stubs
+ *(.v4_bx)
+ .v4_bx         0x00000000000080c4        0x0 linker stubs
+
+.fini           0x00000000000080c4        0xc
+ *(SORT_NONE(.fini))
+ .fini          0x00000000000080c4        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crti.o
+                0x00000000000080c4                _fini
+ .fini          0x00000000000080c8        0x8 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtn.o
+                [!provide]                        PROVIDE (__etext = .)
+                [!provide]                        PROVIDE (_etext = .)
+                [!provide]                        PROVIDE (etext = .)
+
+.rodata
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.rodata1
+ *(.rodata1)
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                [!provide]                        PROVIDE (__exidx_start = .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                [!provide]                        PROVIDE (__exidx_end = .)
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+ *(.eh_frame_entry .eh_frame_entry.*)
+
+.eh_frame       0x00000000000080d0        0x4
+ *(.eh_frame)
+ .eh_frame      0x00000000000080d0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .eh_frame      0x00000000000080d0        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtend.o
+ *(.eh_frame.*)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.gnu_extab
+ *(.gnu_extab*)
+
+.exception_ranges
+ *(.exception_ranges*)
+                0x00000000000180d4                . = (ALIGN (CONSTANT (MAXPAGESIZE)) + (. & (CONSTANT (MAXPAGESIZE) - 0x1)))
+
+.eh_frame
+ *(.eh_frame)
+ *(.eh_frame.*)
+
+.gnu_extab
+ *(.gnu_extab)
+
+.gcc_except_table
+ *(.gcc_except_table .gcc_except_table.*)
+
+.exception_ranges
+ *(.exception_ranges*)
+
+.tdata          0x00000000000180d4        0x0
+                [!provide]                        PROVIDE (__tdata_start = .)
+ *(.tdata .tdata.* .gnu.linkonce.td.*)
+
+.tbss
+ *(.tbss .tbss.* .gnu.linkonce.tb.*)
+ *(.tcommon)
+
+.preinit_array  0x00000000000180d4        0x0
+                [!provide]                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x00000000000180d4        0x4
+                [!provide]                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.init_array.*) SORT_BY_INIT_PRIORITY(.ctors.*))
+ *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
+ .init_array    0x00000000000180d4        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+                [!provide]                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x00000000000180d8        0x4
+                [!provide]                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_INIT_PRIORITY(.fini_array.*) SORT_BY_INIT_PRIORITY(.dtors.*))
+ *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
+ .fini_array    0x00000000000180d8        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+                [!provide]                        PROVIDE (__fini_array_end = .)
+
+.ctors
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .ctors)
+ *(SORT_BY_NAME(.ctors.*))
+ *(.ctors)
+
+.dtors
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend?.o *crtend.o) .dtors)
+ *(SORT_BY_NAME(.dtors.*))
+ *(.dtors)
+
+.jcr
+ *(.jcr)
+
+.data.rel.ro
+ *(.data.rel.ro.local* .gnu.linkonce.d.rel.ro.local.*)
+ *(.data.rel.ro .data.rel.ro.* .gnu.linkonce.d.rel.ro.*)
+
+.dynamic
+ *(.dynamic)
+
+.got            0x00000000000180dc        0x0
+ *(.got.plt)
+ *(.igot.plt)
+ .igot.plt      0x00000000000180dc        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ *(.got)
+ *(.igot)
+
+.data           0x00000000000180dc        0x4
+                0x00000000000180dc                __data_start = .
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000000180dc        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crti.o
+ .data          0x00000000000180dc        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .data.__dso_handle
+                0x00000000000180dc        0x4 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+                0x00000000000180dc                __dso_handle
+ .data          0x00000000000180e0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtend.o
+ .data          0x00000000000180e0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtn.o
+
+.tm_clone_table
+                0x00000000000180e0        0x0
+ .tm_clone_table
+                0x00000000000180e0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .tm_clone_table
+                0x00000000000180e0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtend.o
+
+.data1
+ *(.data1)
+                0x00000000000180e0                _edata = .
+                [!provide]                        PROVIDE (edata = .)
+                0x00000000000180e0                . = .
+                0x00000000000180e0                __bss_start = .
+                0x00000000000180e0                __bss_start__ = .
+
+.bss            0x00000000000180e0       0x1c
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00000000000180e0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crti.o
+ .bss           0x00000000000180e0        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .bss.completed.1
+                0x00000000000180e0        0x1 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ *fill*         0x00000000000180e1        0x3 
+ .bss.object.0  0x00000000000180e4       0x18 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .bss           0x00000000000180fc        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtend.o
+ .bss           0x00000000000180fc        0x0 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtn.o
+ *(COMMON)
+                0x00000000000180fc                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x00000000000180fc                _bss_end__ = .
+                0x00000000000180fc                __bss_end__ = .
+                0x00000000000180fc                . = ALIGN (0x4)
+                0x00000000000180fc                . = SEGMENT_START ("ldata-segment", .)
+                0x00000000000180fc                . = ALIGN (0x4)
+                0x00000000000180fc                __end__ = .
+                0x00000000000180fc                _end = .
+                [!provide]                        PROVIDE (end = .)
+
+.stack          0x0000000000080000        0x0
+                0x0000000000080000                _stack = .
+ *(.stack)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x23
+ *(.comment)
+ .comment       0x0000000000000000       0x23 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+                                         0x24 (size before relaxing)
+ .comment       0x0000000000000023       0x24 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtend.o
+
+.gnu.build.attributes
+ *(.gnu.build.attributes .gnu.build.attributes.*)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info .gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line .debug_line.* .debug_line_end)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges
+ *(.debug_ranges)
+
+.debug_macro
+ *(.debug_macro)
+
+.debug_addr
+ *(.debug_addr)
+
+.ARM.attributes
+                0x0000000000000000       0x28
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x0000000000000000       0x1c c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crti.o
+ .ARM.attributes
+                0x000000000000001c       0x2a c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtbegin.o
+ .ARM.attributes
+                0x0000000000000046       0x30 c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtend.o
+ .ARM.attributes
+                0x0000000000000076       0x1c c:/devkitpro/devkitarm/bin/../lib/gcc/arm-none-eabi/10.1.0/thumb/crtn.o
+ *(.gnu.attributes)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+/DISCARD/
+ *(.note.GNU-stack)
+ *(.gnu_debuglink)
+ *(.gnu.lto_*)
+OUTPUT(C:/Users/TheFl/source/repos/LearnGBA/LearnGBA.elf elf32-littlearm)
