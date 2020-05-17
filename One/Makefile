@@ -30,12 +30,15 @@ INCLUDES	:=
 # options for code generation
 #---------------------------------------------------------------------------------
 ARCH	:=	-mthumb -mthumb-interwork
-
+ifeq ($(DEBUG),1)
+CFLAGS := -gdwarf-2 -Wall -mcpu=arm7tdmi -mtune=arm7tdmi $(ARCH)
+else
 CFLAGS	:=	-g -Wall -O3\
 		-mcpu=arm7tdmi -mtune=arm7tdmi\
- 		-fomit-frame-pointer\
+		-fomit-frame-pointer\
 		-ffast-math \
 		$(ARCH)
+endif
 
 CFLAGS	+=	$(INCLUDE)
 
