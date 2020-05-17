@@ -1,0 +1,1 @@
+"C:/Program Files/mGBA/mGBA.exe" build/HelloGameboy.gba

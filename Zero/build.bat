@@ -1,0 +1,2 @@
+C:\devkitPro\devkitARM\bin\arm-none-eabi-g++.exe -specs=C:/devKitPro/devKitARM/gba.specs -fno-rtti -fno-exceptions -g -gdwarf-2 -Wall -mcpu=arm7tdmi -mtune=arm7tdmi -I C:\devkitPro\libgba\include -mthumb -mthumb-interwork -c source/HelloGameboy.cpp -o build/obj/HelloGameboy.o
+C:\devkitPro\devkitARM\bin\arm-none-eabi-ld.exe -e 0x08000000 -g -marmelf -Map build/Zero.map build/obj/HelloGameboy.o -L C:\devkitPro\libgba\lib -l gba -l mm -l fat -o build/HelloGameboy.gba
