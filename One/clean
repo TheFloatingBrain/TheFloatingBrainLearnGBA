@@ -1,5 +1,7 @@
 rm One_mb.elf
 rm One_mb.gba
+rm One.elf
+rm One.gba
 rm build/*.o
 rm build/*.map
 rm build/*.d
