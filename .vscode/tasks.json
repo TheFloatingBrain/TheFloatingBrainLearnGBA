@@ -1,3 +1,4 @@
+
 {
     // See https://go.microsoft.com/fwlink/?LinkId=733558
     // for the documentation about the tasks.json format
@@ -39,7 +40,7 @@
             "dependsOn": ["make debug"],
             "isBackground": false,
             "windows": {
-                "command": "C:/mGBA/mGBA.exe -g ${workspaceFolder}/${workspaceFolderBasename}.gba;sleep 5;echo debuggerReady"
+                "command": "C:/mGBA/mGBA.exe -g One.gba"
             },
             "osx":{
                 "command": "/Users/jamies/mGBA/mGBA.app/Contents/MacOS/mGBA",

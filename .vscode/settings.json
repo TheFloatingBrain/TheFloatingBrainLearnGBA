@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "xtr1common": "cpp"
+    }, 
+    "terminal.integrated.shell.windows": "C:/devkitPro/msys2/msys2_shell.cmd",
+    "terminal.integrated.shellArgs.windows": ["-no-start", "-here"]
+}
