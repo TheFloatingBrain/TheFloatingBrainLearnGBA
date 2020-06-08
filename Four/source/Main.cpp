@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 
-
+/*
 const unsigned char Cross_data [] = {
     0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
     0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
@@ -69,7 +69,7 @@ const unsigned short Cross_palette [] = {
     0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,
     0x0000, 0x0000, 0x0000, 0x0000
 };
-
+*/
 #define MGBA_DEBUG_MACRO 1
 //#define OTHER_DEBUG_MACRO 0
 #ifdef MGBA_DEBUG_MACRO
@@ -87,21 +87,23 @@ static int DEFUALT_MODE_CONSTANT = MODE_2 | OBJ_ENABLE | OBJ_1D_MAP | BG2_ENABLE
 extern int currentMode;
 
 void Start();
-
+#include "Cross.h"
 int main()
 {
 	//const auto MAX_COLOR_CONSTANT = 0xFF00;
 	//auto currentColor = 0x0000;
 	Start();
 	//DEBUG_CONSOLE_INITIALIZE_MACRO();
-	for( size_t i = 0; i < 255; ++i )
-		*( ( volatile uint16_t* ) OBJ_COLORS + i ) = ( uint16_t ) Cross_palette[ i + 1 ];
+	for( size_t i = 0; i < 16; ++i )
+		*( ( unsigned short * ) OBJ_COLORS + i ) = ( unsigned short ) CrossPal[ i ];
 
-	for( size_t i = 0; i < 256; ++i )
-		*( ( volatile uint16_t* ) 0x06010000 + i ) = ( uint16_t ) Cross_data[ i ];
+    volatile unsigned int* vmem = ( volatile unsigned int* ) 0x06010000;
+    for( size_t i = 0; i < 32; ++i ) {
+        vmem[ i ] = CrossTiles[ i ];
+    }
     OBJATTR oam0;
     oam0.attr0 = OBJ_16_COLOR | OBJ_SQUARE | ( ( s16 ) OBJ_X( 50 ) );
-    oam0.attr1 = ( uint8_t ) ATTR1_SIZE_16 | ( ( s16 ) OBJ_Y( 100 ) );
+    oam0.attr1 = ATTR1_SIZE_16 | ( ( s16 ) OBJ_Y( 100 ) );
     oam0.attr2 = 0;
 	*( ( volatile uint16_t* ) OAM ) = ( volatile uint16_t ) oam0.attr0;
 	*( ( ( volatile uint16_t* ) OAM ) + 1 ) = ( volatile uint16_t ) oam0.attr1;
